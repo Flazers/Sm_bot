@@ -17,7 +17,7 @@ def banner():
     print(r" / __| _ \/_\ |  \/  |  \/  | __| _ \ ")
     print(r" \__ \  _/ _ \| |\/| | |\/| | _||   / ")
     print(r" |___/_|/_/ \_\_|  |_|_|  |_|___|_|_\ ")
-    print()
+    print(r"                                   1.1")
     print(r"     Spammer: github.com/Flazers      ")
     print(RESET_ALL)
 
@@ -699,7 +699,7 @@ def check_internet():
 
 
 def check_version():
-    version = "3.1"
+    version = "1.1"
     if float(version) < float(get("https://raw.githubusercontent.com/Flazers/spammer/master/version.txt").text):
         print(f"\n{BRIGHT}{RED}[*] Версия устарела и нуждается в обновлении!{RESET_ALL}")
         sleep(1)
